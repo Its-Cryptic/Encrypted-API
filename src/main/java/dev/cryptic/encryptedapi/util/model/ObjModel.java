@@ -2,9 +2,9 @@ package dev.cryptic.encryptedapi.util.model;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Vector3f;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.Vec3;
+import org.joml.Vector3f;
 
 import java.io.IOException;
 import java.util.ArrayDeque;
@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Deque;
 
 public abstract class ObjModel {
+    public Vector3f position = new Vector3f(0, 0, 0);
     private final Deque<ObjModel> model = new ArrayDeque<>();
     public ArrayList<Face> faces = new ArrayList<>();
     public float explosionPower = 0.0F;

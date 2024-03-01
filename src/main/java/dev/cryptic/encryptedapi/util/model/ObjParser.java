@@ -2,10 +2,10 @@ package dev.cryptic.encryptedapi.util.model;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Vector3f;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.Vec2;
+import org.joml.Vector3f;
 
 import java.io.*;
 import java.util.ArrayList;

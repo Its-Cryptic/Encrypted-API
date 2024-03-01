@@ -1,20 +1,9 @@
 package dev.cryptic.encryptedapi.event;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import dev.cryptic.encryptedapi.EncryptedAPI;
-import dev.cryptic.encryptedapi.util.model.ObjParser;
-import dev.cryptic.encryptedapi.util.model.ObjUtil;
-import dev.cryptic.encryptedapi.util.model.SinModel;
-import net.minecraft.client.Minecraft;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RenderLevelStageEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import team.lodestar.lodestone.handlers.RenderHandler;
-import team.lodestar.lodestone.registry.client.LodestoneRenderTypeRegistry;
+
 
 public class ClientEvents {
     @Mod.EventBusSubscriber(modid = EncryptedAPI.MODID, value = Dist.CLIENT)
