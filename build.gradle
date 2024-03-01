@@ -24,9 +24,9 @@ apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
-version = '1.19.2-1.0.0'
-group = 'dev.cryptic.mod_name' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'mod_name'
+version = '1.19.2-0.0.3'
+group = 'dev.cryptic.encryptedapi' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'encryptedapi'
 
 configurations {
     library
@@ -75,7 +75,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'riftrealms'
+            property 'forge.enabledGameTestNamespaces', 'encryptedapi'
 
             mods {
                 examplemod {
@@ -91,10 +91,10 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'riftrealms'
+            property 'forge.enabledGameTestNamespaces', 'encryptedapi'
 
             mods {
-                riftrealms {
+                encryptedapi {
                     source sourceSets.main
                 }
             }
@@ -110,10 +110,10 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'riftrealms'
+            property 'forge.enabledGameTestNamespaces', 'encryptedapi'
 
             mods {
-                examplemod {
+                encryptedapi {
                     source sourceSets.main
                 }
             }
@@ -200,11 +200,11 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-1.19.2-forge:${jeiVersion}")
 
     // Curios Dependency
-    //compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.2-${curiosVersion}:api")
-    //runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.2-${curiosVersion}")
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.2-${curiosVersion}:api")
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.2-${curiosVersion}")
 
     // Lodestone Dependency
-    //implementation fg.deobf("team.lodestar.lodestone:lodestone:${minecraftVersion}-${lodestoneVersion}")
+    implementation fg.deobf("team.lodestar.lodestone:lodestone:${minecraftVersion}-${lodestoneVersion}")
 
     // GeckoLib Dependency
     //shade fg.deobf("software.bernie.geckolib:geckolib-forge-1.19:${geckoVersion}")
@@ -238,7 +238,7 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "riftrealms",
+                "Specification-Title"     : "encryptedapi",
                 "Specification-Vendor"    : "Cryptic",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
@@ -251,9 +251,9 @@ jar {
 
 // Example configuration to allow publishing using the maven-publish plugin
 // This is the preferred method to reobfuscate your jar file
-jar.finalizedBy('reobfJar')
+//jar.finalizedBy('reobfJar')
 // However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
-// publish.dependsOn('reobfJar')
+publish.dependsOn('reobfJar')
 
 publishing {
     publications {

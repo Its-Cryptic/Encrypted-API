@@ -18,10 +18,10 @@ public class ObjParser {
     public List<Vec2> textures = new ArrayList<>();
     public List<Face> faces = new ArrayList<>();
 
-    public void parseObjFile(ResourceLocation resourcePath) throws IOException {
-        InputStream inputStream = Minecraft.getInstance().getResourceManager().getResource(resourcePath).get().open();
+    public void parseObjFile(ResourceLocation modelLocation) throws IOException {
+        InputStream inputStream = Minecraft.getInstance().getResourceManager().getResource(modelLocation).get().open();
         if (inputStream == null) {
-            throw new IOException("Resource not found: " + resourcePath);
+            throw new IOException("Resource not found: " + modelLocation);
         }
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
@@ -68,4 +68,7 @@ public class ObjParser {
         reader.close();
     }
 
+    public ArrayList<Face> getFaces() {
+        return (ArrayList<Face>) faces;
+    }
 }
