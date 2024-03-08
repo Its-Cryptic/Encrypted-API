@@ -1,12 +1,9 @@
-package dev.cryptic.encryptedapi.registries;
+package dev.cryptic.encryptedapi.api.registries;
 
-import dev.cryptic.encryptedapi.util.model.ObjModel;
-import net.minecraft.resources.ResourceLocation;
+import dev.cryptic.encryptedapi.vfx.model.ObjModel;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ObjModelRegistry {
     private static List<ObjModel> OBJ_MODELS = new ArrayList<>();

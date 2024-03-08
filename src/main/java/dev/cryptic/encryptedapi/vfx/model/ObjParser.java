@@ -1,7 +1,5 @@
-package dev.cryptic.encryptedapi.util.model;
+package dev.cryptic.encryptedapi.vfx.model;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.Vec2;
@@ -14,8 +12,9 @@ import java.util.List;
 public class ObjParser {
 
     public List<Vector3f> vertices = new ArrayList<>();
+    public List<Vertex> vertexList = new ArrayList<>();
     public List<Vector3f> normals = new ArrayList<>();
-    public List<Vec2> textures = new ArrayList<>();
+    public List<Vec2> uvs = new ArrayList<>();
     public List<Face> faces = new ArrayList<>();
 
     public void parseObjFile(ResourceLocation modelLocation) throws IOException {
@@ -33,6 +32,7 @@ public class ObjParser {
                 float y = Float.parseFloat(tokens[2]);
                 float z = Float.parseFloat(tokens[3]);
                 vertices.add(new Vector3f(x, y, z));
+                vertexList.add(new Vertex(new Vector3f(x, y, z)));
             } else if (line.startsWith("vn ")) {
                 String[] tokens = line.split(" ");
                 float x = Float.parseFloat(tokens[1]);
@@ -43,7 +43,7 @@ public class ObjParser {
                 String[] tokens = line.split(" ");
                 float u = Float.parseFloat(tokens[1]);
                 float v = Float.parseFloat(tokens[2]);
-                textures.add(new Vec2(u, v));
+                uvs.add(new Vec2(u, v));
             } else if (line.startsWith("f ")) {
                 String[] tokens = line.split(" ");
                 List<Vector3f> faceVertices = new ArrayList<>();
@@ -55,7 +55,7 @@ public class ObjParser {
                     int vertexIndex = Integer.parseInt(parts[0]) - 1;
                     int textureIndex = Integer.parseInt(parts[1]) - 1;
                     faceVertices.add(vertices.get(vertexIndex));
-                    faceUVs.add(textures.get(textureIndex));
+                    faceUVs.add(uvs.get(textureIndex));
                     if (i == 1) { // Adjust based on how you decide to handle normals
                         int normalIndex = Integer.parseInt(parts[2]) - 1;
                         faceNormal = normals.get(normalIndex);
